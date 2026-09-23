@@ -20,6 +20,12 @@ namespace plugin {
     }
 
     void GameEventHandler::onDataLoaded() {
+        auto crosshair_addr = REL::RelocationID(39534, 40620).address();
+        if (crosshair_addr) {
+            auto crosshair_patch_addr=crosshair_addr + REL::VariantOffset(0x60, 0x65, 0x60).offset();
+            REL::safe_write(crosshair_patch_addr, "\x90\x90\x90\x90\x90\x90",6);
+            logger::info("CrosshairRefEvents Fixed");
+        }
         logger::info("onDataLoaded()");
     }
 
