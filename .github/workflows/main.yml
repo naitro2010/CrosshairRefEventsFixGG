@@ -1,4 +1,4 @@
-name: Template
+name: CrosshairRefEventsFix
 on:
   push:
     branches: ["main"]
@@ -9,8 +9,8 @@ on:
         type: string
 env:
   BUILD_TYPE: Release
-  PROJECT_NAME: Template
-  PROJECT_LONG_NAME: Template
+  PROJECT_NAME: CrosshairRefEventsFix
+  PROJECT_LONG_NAME: CrosshairRefEventsFix
 jobs:
   build-skse:
     runs-on: windows-2022
@@ -42,11 +42,11 @@ jobs:
           cd artifacts
           mkdir SKSE
           mkdir SKSE/Plugins
-          move ../Template.dll SKSE/Plugins
-          move ../Template.pdb SKSE/Plugins
+          move ../CrosshairRefEventsFix.dll SKSE/Plugins
+          move ../CrosshairRefEventsFix.pdb SKSE/Plugins
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with: 
-          name: Template
+          name: CrosshairRefEventsFix
           path: build/bin/release/artifacts
           retention-days: 90
